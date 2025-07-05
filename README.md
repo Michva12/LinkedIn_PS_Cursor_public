@@ -1,5 +1,5 @@
 # LinkedIn Profile Saver Chrome Extension
-
+# You will need to create the ICONS folder, with 3 images, 16, 48, and 128 pixels
 A Chrome extension that automatically extracts and saves LinkedIn profile data to Google Sheets when you visit profile pages.
 
 ## Features
