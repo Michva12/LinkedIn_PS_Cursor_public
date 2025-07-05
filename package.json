@@ -1,0 +1,32 @@
+{
+  "name": "linkedin-profile-saver-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension that automatically saves LinkedIn profiles to Google Sheets",
+  "main": "setup.js",
+  "scripts": {
+    "setup": "node setup.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "chrome-extension",
+    "linkedin",
+    "google-sheets",
+    "profile-scraper",
+    "automation"
+  ],
+  "author": "LinkedIn Profile Saver",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/linkedin-profile-saver-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/linkedin-profile-saver-extension/issues"
+  },
+  "homepage": "https://github.com/yourusername/linkedin-profile-saver-extension#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+} 

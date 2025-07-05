@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Saver - Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0077b5;
+        }
+        .header h1 {
+            color: #0077b5;
+            margin: 0;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .mock-profile {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .profile-field {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #0077b5;
+        }
+        .field-label {
+            font-weight: 600;
+            color: #0077b5;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .field-value {
+            margin-top: 4px;
+            color: #333;
+        }
+        .button {
+            background: #0077b5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 5px;
+        }
+        .button:hover {
+            background: #005885;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 LinkedIn Profile Saver - Test Page</h1>
+            <p>Use this page to test your extension configuration and see what data would be extracted</p>
+        </div>
+
+        <div class="test-section">
+            <h3>📋 Extension Status</h3>
+            <div id="extensionStatus" class="status info">
+                Checking extension status...
+            </div>
+            <button class="button" onclick="checkExtensionStatus()">Check Status</button>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 Mock LinkedIn Profile</h3>
+            <p>This simulates what a LinkedIn profile page looks like to test the extension's data extraction:</p>
+            
+            <div class="mock-profile">
+                <div class="profile-field">
+                    <div class="field-label">Name</div>
+                    <div class="field-value">John Doe</div>
+                </div>
+                <div class="profile-field">
+                    <div class="field-label">Headline</div>
+                    <div class="field-value">Senior Software Engineer at Tech Company</div>
+                </div>
+                <div class="profile-field">
+                    <div class="field-label">Location</div>
+                    <div class="field-value">San Francisco, CA</div>
+                </div>
+                <div class="profile-field">
+                    <div class="field-label">Company</div>
+                    <div class="field-value">Tech Company Inc.</div>
+                </div>
+                <div class="profile-field">
+                    <div class="field-label">About</div>
+                    <div class="field-value">Passionate software engineer with 5+ years of experience in web development and cloud technologies.</div>
+                </div>
+            </div>
+
+            <button class="button" onclick="simulateProfileExtraction()">Simulate Profile Extraction</button>
+        </div>
+
+        <div class="test-section">
+            <h3>🔗 Test Links</h3>
+            <p>Use these links to test the extension on real LinkedIn profiles:</p>
+            <a href="https://www.linkedin.com/in/williamhgates/" target="_blank" class="button">Bill Gates Profile</a>
+            <a href="https://www.linkedin.com/in/jeffweiner08/" target="_blank" class="button">Jeff Weiner Profile</a>
+            <a href="https://www.linkedin.com/in/satyanadella/" target="_blank" class="button">Satya Nadella Profile</a>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 Expected Extracted Data</h3>
+            <p>When the extension works correctly, it should extract data in this format:</p>
+            <div class="code-block">
+{
+  "name": "John Doe",
+  "headline": "Senior Software Engineer at Tech Company",
+  "location": "San Francisco, CA",
+  "company": "Tech Company Inc.",
+  "about": "Passionate software engineer with 5+ years...",
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Tech Company Inc.",
+      "duration": "2020 - Present"
+    }
+  ],
+  "education": [
+    {
+      "school": "University of California",
+      "degree": "Bachelor of Science in Computer Science",
+      "year": "2015 - 2019"
+    }
+  ],
+  "skills": ["JavaScript", "Python", "React", "Node.js"],
+  "url": "https://www.linkedin.com/in/johndoe/",
+  "extractedAt": "2024-01-15T10:30:00.000Z"
+}
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🛠️ Troubleshooting</h3>
+            <div class="status info">
+                <strong>Common Issues:</strong><br>
+                • Extension not loading: Check manifest.json and file structure<br>
+                • Authentication failed: Verify Google OAuth credentials<br>
+                • Data not saving: Check Google Apps Script URL and deployment<br>
+                • Selectors not working: LinkedIn may have updated their HTML structure
+            </div>
+            <button class="button" onclick="openDevTools()">Open DevTools</button>
+            <button class="button" onclick="checkConsole()">Check Console</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if extension is installed and working
+        function checkExtensionStatus() {
+            const statusDiv = document.getElementById('extensionStatus');
+            
+            try {
+                // Try to communicate with the extension
+                if (typeof chrome !== 'undefined' && chrome.runtime) {
+                    chrome.runtime.sendMessage({action: 'getAuthStatus'}, function(response) {
+                        if (chrome.runtime.lastError) {
+                            statusDiv.className = 'status error';
+                            statusDiv.innerHTML = '❌ Extension not found or not loaded properly';
+                        } else {
+                            statusDiv.className = 'status success';
+                            statusDiv.innerHTML = '✅ Extension is loaded and responding';
+                        }
+                    });
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = '❌ Chrome extension APIs not available';
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = '❌ Error checking extension: ' + error.message;
+            }
+        }
+
+        // Simulate profile extraction
+        function simulateProfileExtraction() {
+            const mockData = {
+                name: "John Doe",
+                headline: "Senior Software Engineer at Tech Company",
+                location: "San Francisco, CA",
+                company: "Tech Company Inc.",
+                about: "Passionate software engineer with 5+ years of experience in web development and cloud technologies.",
+                experience: [
+                    {
+                        title: "Senior Software Engineer",
+                        company: "Tech Company Inc.",
+                        duration: "2020 - Present"
+                    }
+                ],
+                education: [
+                    {
+                        school: "University of California",
+                        degree: "Bachelor of Science in Computer Science",
+                        year: "2015 - 2019"
+                    }
+                ],
+                skills: ["JavaScript", "Python", "React", "Node.js"],
+                url: window.location.href,
+                extractedAt: new Date().toISOString()
+            };
+
+            console.log('LinkedIn Profile Saver: Simulated extracted data:', mockData);
+            
+            // Try to send to extension
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.runtime.sendMessage({
+                    action: 'saveProfile',
+                    data: mockData
+                }, function(response) {
+                    if (chrome.runtime.lastError) {
+                        console.log('Extension not available for testing');
+                    } else {
+                        console.log('Extension response:', response);
+                    }
+                });
+            }
+
+            alert('Mock profile data logged to console. Check DevTools to see the extracted data format.');
+        }
+
+        // Open DevTools
+        function openDevTools() {
+            if (typeof chrome !== 'undefined' && chrome.devtools) {
+                chrome.devtools.inspectedWindow.eval('console.log("DevTools opened for LinkedIn Profile Saver testing")');
+            }
+            alert('Please open DevTools manually (F12 or right-click → Inspect) to see console logs.');
+        }
+
+        // Check console for errors
+        function checkConsole() {
+            console.log('LinkedIn Profile Saver: Test console check');
+            alert('Check the browser console (F12) for any error messages or extension logs.');
+        }
+
+        // Auto-check extension status on page load
+        window.addEventListener('load', function() {
+            setTimeout(checkExtensionStatus, 1000);
+        });
+    </script>
+</body>
+</html> 
